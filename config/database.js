@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 mongoose.connect(
-  "mongodb+srv://00BUKU:@podlux.nwomy7k.mongodb.net/PodLux?retryWrites=true&w=majority",
+  "mongodb+srv://00BUKU:Black1730!@podlux.nwomy7k.mongodb.net/PodLux?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
