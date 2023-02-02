@@ -17,7 +17,7 @@ function LoginPage({ handleSignUpOrLogin }) {
 
     try {
       const response = await userService.login(state);
-      handleSignUpOrLogin(response.user);
+      handleSignUpOrLogin();
       navigate("/");
     } catch (err) {
       setError(err.message);

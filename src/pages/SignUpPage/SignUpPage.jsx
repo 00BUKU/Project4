@@ -2,55 +2,25 @@ import React, { useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import userService from "../../utils/userService";
-import { useNavigate } from "react-router-dom";
 
-function SignUpPage({handleSignUpOrLogin}) {
-    const [state, setState] = useState({
-      username: "",
-      email: "",
-      password: "",
-      passwordConf: "",
-    });
+function SignUpPage({ handleSignUpOrLogin }) {
+  const [state, setState] = useState({
+    username: "",
+    email: "",
+    password: "",
+    passwordConf: "",
+  });
 
-  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-
-
-  async function handleSubmit(e){
-    e.preventDefault()
-    
-    // Photos have to be sent over using FormData,
-    // they are sent over to the server in multiple requests
-    const formData = new FormData()
-    formData.append("photo", selectedFile)
-    
-    for (let fieldName in state){
-      console.log(fieldName, state[fieldName])
-      // append the rest of the data to the form obejct
-      formData.append(fieldName, state[fieldName])
-    }
-   
     try {
-        // If you want to view the formData you need to loop over the object
-        console.log(formData.forEach((item) => console.log(item)))
-        
-        // use the userService to make the fetch request
-        await userService.signup(formData);
-
-        
-
-        // Route to wherever you want!
-        // after you get a response from the server from 
-        // the signup request, you need to grab the token from 
-        // local storage and set the user!
-      
-      
-      } catch (err) {
-        // Invalid user data (probably duplicate email)
-        console.log(err.message)
-        setError(err.message)
-      }
-  }
+      await userService.signup(state);
+      handleSignUpOrLogin();
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   const handleChange = (e) => {
     setState({
@@ -59,7 +29,6 @@ function SignUpPage({handleSignUpOrLogin}) {
     });
   };
 
-  const [selectedFile, setSelectedFile] = useState('');
   const [error, setError] = useState("");
 
   return (
