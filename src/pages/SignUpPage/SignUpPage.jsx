@@ -22,7 +22,7 @@ function SignUpPage({handleSignUpOrLogin}) {
     // Photos have to be sent over using FormData,
     // they are sent over to the server in multiple requests
     const formData = new FormData()
-    formData.append("", selectedFile)
+    formData.append("photo", selectedFile)
     
     for (let fieldName in state){
       console.log(fieldName, state[fieldName])
@@ -36,6 +36,8 @@ function SignUpPage({handleSignUpOrLogin}) {
         
         // use the userService to make the fetch request
         await userService.signup(formData);
+
+        
 
         // Route to wherever you want!
         // after you get a response from the server from 

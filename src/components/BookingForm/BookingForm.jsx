@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const BookingForm = () => {
+const BookingForm = ({ onSubmit }) => {
 
     const [formData, setFormData] = useState({
         guests: 0,
         dateFrom: '',
         dateTo: '',
-        totalPrice: 0
     });
+
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [bookingSuccess, setBookingSuccess] = useState(false);
+
+    useEffect(() => {
+        const days = (new Date(formData.dateTo) - new Date(formData.dateFrom)) / (1000 * 60 * 60 * 24);
+        setTotalPrice(days * 25);
+    }, [formData.dateFrom, formData.dateTo]);
 
     const handleChange = (event) => {
         setFormData({
@@ -20,39 +27,30 @@ const BookingForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        axios.post('/api/bookings', formData)
-        .then(res => {
-            console.log(res.data);
+        onSubmit({ ...formData, totalPrice });
 
-            setFormData({
-                guests: 0,
-                dateFrom: '',
-                dateTo: '',
-                totalPrice: 0
-            });
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        setBookingSuccess(true);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="guests">Guests:</label>
-          <input type="text" id="guests" name="guests" value={formData.guests} onChange={handleChange} />
-    
-          <label htmlFor="dateFrom">Date From:</label>
-          <input type="date" id="dateFrom" name="dateFrom" value={formData.dateFrom} onChange={handleChange} />
-    
-          <label htmlFor="dateTo">Date To:</label>
-          <input type="date" id="dateTo" name="dateTo" value={formData.dateTo} onChange={handleChange} />
-    
-          <label htmlFor="totalPrice">Total Price:</label>
-          <input type="text" id="totalPrice" name="totalPrice" value={formData.totalPrice} onChange={handleChange} />
-    
-          <button type="submit">Book Pod</button>
-        </form>
-      );
-    };
-    
-    export default BookingForm;
+        <>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="guests">Guests:</label>
+                <input type="text" id="guests" name="guests" value={formData.guests} onChange={handleChange} />
+          
+                <label htmlFor="dateFrom">Date From:</label>
+                <input type="date" id="dateFrom" name="dateFrom" value={formData.dateFrom} onChange={handleChange} />
+          
+                <label htmlFor="dateTo">Date To:</label>
+                <input type="date" id="dateTo" name="dateTo" value={formData.dateTo} onChange={handleChange} />
+          
+                <p>Total Price: ${totalPrice.toFixed(2)}</p>
+          
+                <button type="submit">Book Pod</button>
+            </form>
+            {bookingSuccess && <p>Your Pod has been booked. Please see guest services representative when you arrive.</p>}
+        </>
+    );
+};
+
+export default BookingForm;
