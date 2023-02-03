@@ -34,11 +34,12 @@ function LoginPage({ handleSignUpOrLogin }) {
   const [error, setError] = useState("");
 
   return (
+
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="teal" textAlign="center">
+        <header as="h2" color="teal" textAlign="center">
           Login
-        </Header>
+        </header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>
             <Form.Input

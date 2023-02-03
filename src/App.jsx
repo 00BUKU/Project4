@@ -5,7 +5,6 @@ import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import BookingPage from "./pages/Booking/BookingPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
-import Header from "./components/Header/Header";
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import userService from "./utils/userService";
 
