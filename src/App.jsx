@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import UserDashboard from "./pages/UserDashboard/UserDashboard";
+
 import BookingPage from "./pages/Booking/BookingPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import HomePage from "./pages/HomePage/HomePage";
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/dashboard" element={<UserDashboard />} />
+
       <Route path="/booking" element={<BookingPage />} />
       <Route path="/signup" element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/" element={<HomePage />} />
