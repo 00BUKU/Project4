@@ -1,12 +1,10 @@
 import mongoose from 'mongoose'
 
 mongoose.connect(
-  "mongodb+srv://00BUKU:Black1730!@podlux.nwomy7k.mongodb.net/PodLux?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }
+  process.env.DATABASE_URL// < replace with your database name!
+
 );
+
 
 const db = mongoose.connection;
 
