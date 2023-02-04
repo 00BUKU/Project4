@@ -16,7 +16,8 @@ import './config/database.js'
 
 // Require controllers here
 const app = express();
-
+import bookingsRouter from './routes/api/bookings.js';
+import productRouter from "./routes/api/product.js";
 app.set('view engine', 'ejs');
 
 // console.log(assetsRouter)
@@ -34,7 +35,9 @@ app.use(auth);
 // api routes must be before the "catch all" route
 import userRoutes from './routes/api/users.js';
 
+app.use('/api/product', productRouter)
 app.use('/api/users', userRoutes);
+app.use('/api/bookings', bookingsRouter);
 // "catch all" route
 app.use(express.static(path.join(__dirname, "dist")));
 

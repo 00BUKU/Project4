@@ -4,7 +4,8 @@ import bookingsCtrl from '../../controllers/bookings.js';
 
 /---------- Protected Routes ----------/
 router.post('/', bookingsCtrl.createBooking);
-router.put('/:id', bookingsCtrl.editBooking);
-router.delete('/:id', bookingsCtrl.deleteBooking);
+router.get('/', bookingsCtrl.getBookings);
+router.get('/:id', bookingsCtrl.getBookingById);
+router.delete('/:id', bookingsCtrl.cancelBooking);
 
 export default router;

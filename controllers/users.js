@@ -32,7 +32,7 @@ async function login(req, res) {
       
       if (isMatch) {
         const token = createJWT(user);
-        res.json({token});
+        res.json({token, user});
       } else {
         return res.status(401).json({err: 'bad credentials'});
       }
