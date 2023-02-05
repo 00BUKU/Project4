@@ -1,0 +1,45 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5em;
+  position: absolute;
+  top: 40px;
+  left: 1;
+  right: 700px;
+}
+
+nav {
+  display: flex;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-right: 1em;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  color: #4287f5;
+  cursor: pointer;
+  padding: 0.75em 1.5em;
+  text-decoration: none;
+  font-size: 1em;
+  border-radius: 4px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #9cedf8;
+  color: #fff;
+}

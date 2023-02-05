@@ -3,6 +3,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import userService from "../../utils/userService";
 import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 function LoginPage({ handleSignUpOrLogin }) {
   const [state, setState] = useState({
@@ -34,14 +35,13 @@ function LoginPage({ handleSignUpOrLogin }) {
   const [error, setError] = useState("");
 
   return (
-
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <header as="h2" color="teal" textAlign="center">
+      <Grid.Column style={{ maxWidth: 450 }} className="grid-column">
+        <Header as="h2" color="blue" textAlign="center" className="header">
           Login
-        </header>
-        <Form autoComplete="off" onSubmit={handleSubmit}>
-          <Segment stacked>
+        </Header>
+        <Form autoComplete="off" onSubmit={handleSubmit} className="form">
+          <Segment stacked className="segment">
             <Form.Input
               type="email"
               name="email"
@@ -50,6 +50,7 @@ function LoginPage({ handleSignUpOrLogin }) {
               onChange={handleChange}
               required
               label="Email"
+              className="form-input"
             />
             <Form.Input
               name="password"
@@ -59,6 +60,7 @@ function LoginPage({ handleSignUpOrLogin }) {
               onChange={handleChange}
               required
               label="Password"
+              className="form-input"
             />
             <Button type="submit" className="btn" primary>
               Login

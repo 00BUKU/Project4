@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-import { set } from 'mongoose';
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import { set } from "mongoose";
 
 const BookingDetail = () => {
-
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [booking, setBooking] = useState({});
   const [updatedBooking, setUpdatedBooking] = useState({});
@@ -42,10 +40,7 @@ const BookingDetail = () => {
       });
       setBooking(updatedData.data);
       navigate(`/dashboard/${id}`);
-    
-    }
-
-    catch (err) {
+    } catch (err) {
       console.error(err);
     }
   };
@@ -54,7 +49,7 @@ const BookingDetail = () => {
     try {
       await axios.delete(`/api/bookings/${id}`);
       navigate(`/dashboard/${id}`);
-      setBooking(updatedData.data)
+      setBooking(updatedData.data);
     } catch (err) {
       console.error(err);
     }
@@ -62,31 +57,29 @@ const BookingDetail = () => {
 
   return (
     <>
-    <form onSubmit={handleUpdate}>
-      <label htmlFor="dateFrom">Date From:</label>
-      <input
-        type="date"
-        id="dateFrom"
-        name="dateFrom"
-        value={updatedBooking.dateFrom}
-        onChange={handleChange}
-      />
+      <form onSubmit={handleUpdate}>
+        <label htmlFor="dateFrom">Date From:</label>
+        <input
+          type="date"
+          id="dateFrom"
+          name="dateFrom"
+          value={updatedBooking.dateFrom}
+          onChange={handleChange}
+        />
 
-      <label htmlFor="dateTo">Date To:</label>
-      <input
-        type="date"
-        id="dateTo"
-        name="dateTo"
-        value={updatedBooking.dateTo}
-        onChange={handleChange}
-      />
+        <label htmlFor="dateTo">Date To:</label>
+        <input
+          type="date"
+          id="dateTo"
+          name="dateTo"
+          value={updatedBooking.dateTo}
+          onChange={handleChange}
+        />
 
-      
-      <button type="submit">Update Booking</button>
-      <button onClick={handleDelete}>Delete Booking</button>
-
-    </form>
-    <h3>Total Price ${updatedBooking.totalPrice}</h3>
+        <button type="submit">Update Booking</button>
+        <button onClick={handleDelete}>Delete Booking</button>
+      </form>
+      <h3>Total Price ${updatedBooking.totalPrice}</h3>
     </>
   );
 };

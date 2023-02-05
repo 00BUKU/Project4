@@ -1,0 +1,43 @@
+.header {
+  font-size: 2em;
+  margin-bottom: 2em;
+}
+
+.form {
+  text-align: left;
+}
+
+.form-input {
+  margin-bottom: 1em;
+}
+
+.segment {
+  background-color: #f0f8ff;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 1px 1px 10px lightgray;
+}
+
+.grid-column {
+  background-color: #e6e6e6;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 1px 1px 10px lightgray;
+}
+
+.btn {
+  background-color: #6495ed;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  margin-top: 1em;
+  padding: 0.7em;
+  border-radius: 0.5em;
+  box-shadow: 1px 1px 10px lightgray;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #4169e1;
+  cursor: pointer;
+}

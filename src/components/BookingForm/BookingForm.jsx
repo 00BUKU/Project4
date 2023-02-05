@@ -61,15 +61,17 @@ console.log(user)
                 {!bookingSuccess && (
                   <>
                     <label htmlFor="guests">Guests:</label>
-                    <input type="text" id="guests" name="guests" value={formData.guests} onChange={handleChange} />
+                    <select id="guests" name="guests" value={formData.guests} onChange={handleChange}>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    </select>
           
                     <label htmlFor="dateFrom">Date From:</label>
                     <input type="date" id="dateFrom" name="dateFrom" value={formData.dateFrom} onChange={handleChange} />
           
                     <label htmlFor="dateTo">Date To:</label>
                     <input type="date" id="dateTo" name="dateTo" value={formData.dateTo} onChange={handleChange} />
-          
-                    <p>Total Price: ${totalPrice.toFixed(2) } Per Night</p>
+                    <p>Total Price: ${totalPrice.toFixed(2) } </p>
                   </>
                 )}
 
