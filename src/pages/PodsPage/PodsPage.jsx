@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import tokenService from '../../utils/tokenService';
 const PodsPage = () => {
+  const navigate = useNavigate()
+  const token = tokenService.getToken()
   const [pods, setPods] = useState([]);
 
   useEffect(() => {
@@ -17,7 +19,10 @@ const PodsPage = () => {
     };
     fetchPods();
   }, []);
-
+if (!token){
+  navigate('/login') 
+  return <h1>UNAUTHORIZED</h1>
+}else{
   if (!Array.isArray(pods)) {
     return <h1>Loading...</h1>;
   }
@@ -37,6 +42,7 @@ const PodsPage = () => {
       </ul>
     </div>
   );
+        }
 };
 
 export default PodsPage;

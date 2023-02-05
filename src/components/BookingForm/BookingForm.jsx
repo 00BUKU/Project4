@@ -69,7 +69,7 @@ console.log(user)
                     <label htmlFor="dateTo">Date To:</label>
                     <input type="date" id="dateTo" name="dateTo" value={formData.dateTo} onChange={handleChange} />
           
-                    <p>Total Price: ${totalPrice.toFixed(2)}</p>
+                    <p>Total Price: ${totalPrice.toFixed(2) } Per Night</p>
                   </>
                 )}
 

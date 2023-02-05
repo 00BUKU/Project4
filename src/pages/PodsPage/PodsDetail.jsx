@@ -25,7 +25,9 @@ const PodDetailPage = () => {
   if (!pod) {
     return <h1>Loading...</h1>;
   }
-
+if(!token){
+  return<h1>UNAUTHORIZED</h1>
+}else{
   return (
     <div>
       <h1>Pod Detail</h1>
@@ -34,6 +36,7 @@ const PodDetailPage = () => {
       <BookingForm id={id}/>
     </div>
   );
+}
 };
 
 export default PodDetailPage;

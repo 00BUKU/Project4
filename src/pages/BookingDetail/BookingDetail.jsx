@@ -61,6 +61,7 @@ const BookingDetail = () => {
   };
 
   return (
+    <>
     <form onSubmit={handleUpdate}>
       <label htmlFor="dateFrom">Date From:</label>
       <input
@@ -80,18 +81,13 @@ const BookingDetail = () => {
         onChange={handleChange}
       />
 
-      <label htmlFor="totalPrice">Total Price:</label>
-      <input
-        type="number"
-        id="totalPrice"
-        name="totalPrice"
-        value={updatedBooking.totalPrice}
-        onChange={handleChange}
-      />
-
+      
       <button type="submit">Update Booking</button>
       <button onClick={handleDelete}>Delete Booking</button>
+
     </form>
+    <h3>Total Price ${updatedBooking.totalPrice}</h3>
+    </>
   );
 };
 
