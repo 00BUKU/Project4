@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
+import tokenService from '../../utils/tokenService';
 const BookingForm = ({ booking, id }) => {
-
+const user = tokenService.getUserFromToken()
+console.log(user)
     const [formData, setFormData] = useState({
         guests: booking ? booking.guests : 0,
         dateFrom: booking ? booking.dateFrom : '',
         dateTo: booking ? booking.dateTo : '',
-        pod: id
     });
     console.log(id)
 
@@ -40,7 +39,9 @@ const BookingForm = ({ booking, id }) => {
             guests: formData.guests,
             dateFrom: formData.dateFrom,
             dateTo: formData.dateTo,
-            totalPrice: totalPrice
+            totalPrice: totalPrice,
+            pod: id,
+            user: user._id
           })
         })
           .then(response => response.json())

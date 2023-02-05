@@ -1,14 +1,26 @@
 import User from '../models/user.js'
+import Booking from "../models/booking.js";
 import jwt from 'jsonwebtoken'
 const SECRET = process.env.SECRET;
 
 
 
+
 export default {
   signup,
-  login
+  login,
+  getUserById
 };
-
+async function getUserById(req, res) {
+  try {
+    const user = await User.findById(req.params.id)
+    const bookings = await Booking.find(User._id)
+    if (!user) return res.status(404).json({err: 'User not found'});
+    res.json({user: user, bookings: bookings});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
 
 async function signup(req, res) {
   const user = new User(req.body);
