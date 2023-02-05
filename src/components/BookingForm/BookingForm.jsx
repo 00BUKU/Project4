@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const BookingForm = ({ booking, onSubmit, onDelete, onEdit }) => {
+const BookingForm = ({ booking, id }) => {
 
     const [formData, setFormData] = useState({
         guests: booking ? booking.guests : 0,
         dateFrom: booking ? booking.dateFrom : '',
         dateTo: booking ? booking.dateTo : '',
+        pod: id
     });
+    console.log(id)
 
     const [totalPrice, setTotalPrice] = useState(booking ? booking.totalPrice : 0);
     const [bookingSuccess, setBookingSuccess] = useState(false);
@@ -28,18 +30,29 @@ const BookingForm = ({ booking, onSubmit, onDelete, onEdit }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setIsEditing(false);
-        onSubmit({ ...formData, totalPrice });
-        setBookingSuccess(true);
-    };
-
-    const handleDelete = () => {
-        onDelete(booking._id);
-    };
-
-    const handleEdit = () => {
-        setIsEditing(true);
-        onEdit(booking);
-    };
+    
+        fetch("/api/bookings", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            guests: formData.guests,
+            dateFrom: formData.dateFrom,
+            dateTo: formData.dateTo,
+            totalPrice: totalPrice
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log("Success:", data);
+            setBookingSuccess(true);
+          })
+          .catch(error => {
+            console.error("Error:", error);
+          });
+      };
+    
 
     return (
         <>

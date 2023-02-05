@@ -6,7 +6,7 @@ import Pod from "../models/pod.js";
 const createPod = async (req, res) => {
   try {
   const pod = new Pod({ ...req.body });
-  await booking.save();
+  await pod.save();
   res.status(201).json({ pod });
   } catch (error) {
   res.status(400).json({ error: error.message });
@@ -26,7 +26,7 @@ const createPod = async (req, res) => {
   try {
   const pod = await Pod.findOneAndDelete({ _id: req.params.id });
   if (!pod) return res.status(401).json({ error: 'pod not found' });
-  res.json({ message: 'Booking successfully cancelled', pod });
+  res.json({ message: 'Pod successfully cancelled', pod });
   } catch (error) {
   res.status(400).json({ error: error.message });
   }

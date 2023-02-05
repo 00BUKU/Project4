@@ -10,7 +10,7 @@ import path, { dirname } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 import logger from 'morgan';
-import favicon  from 'serve-favicon';
+
 
 import './config/database.js'
 
@@ -22,7 +22,7 @@ app.set('view engine', 'ejs');
 
 // console.log(assetsRouter)
 // add in when the app is ready to be deployed
-// app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
+
 app.use(logger('dev'));
 app.use(express.json());
 // app.use("/src", assetsRouter);
