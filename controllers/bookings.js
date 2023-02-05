@@ -39,9 +39,27 @@ res.status(400).json({ error: error.message });
 }
 };
 
-export default {
-createBooking,
-getBookings,
-getBookingById,
-cancelBooking
-};
+const updateBooking = async (req, res) => {
+    try {
+    const booking = await Booking.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    });
+    if (!booking)
+    return res.status(404).json({ error: "Booking not found" });
+    res.json({ message: "Booking successfully updated", booking });
+    } catch (error) {
+    res.status(400).json({ error: error.message });
+    }
+    };
+    
+    export default {
+    createBooking,
+    getBookings,
+    getBookingById,
+    cancelBooking,
+    updateBooking,
+    };
+    
+    
+    
+    

@@ -20,7 +20,7 @@ const UserDashboard = ({ match }) => {
 
 fetchUser();
 }, []);
-console.log(bookings._id)
+
 
   return (
     <div>
