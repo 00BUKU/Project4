@@ -9,6 +9,8 @@ import SignUpPage from './pages/SignUpPage/SignUpPage';
 import userService from "./utils/userService";
 import PodsPage from "./pages/PodsPage/PodsPage";
 import PodDetailPage from "./pages/PodsPage/PodsDetail";
+import UserDashboard from "./pages/userDashboard/userDashboard";
+import Nav from "./components/Header/Nav";
 
 
 function App() {
@@ -20,15 +22,18 @@ function App() {
   }
 
   return (
+    <>
+    <Nav/>
     <Routes>
-            <Route path="/pod/:id" element={<PodDetailPage />} />
-
+      <Route path="/pod/:id" element={<PodDetailPage />} />
+      <Route path="/dashboard/:id" element={<UserDashboard />} />
       <Route path="/pods" element={<PodsPage />} />
       <Route path="/booking" element={<BookingPage />} />
       <Route path="/signup" element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
     </Routes>
+    </>
   );
 }
 
