@@ -30,7 +30,7 @@ const PodDetailPage = () => {
   } else {
     return (
       <div>
-        <h1>Pod Detail</h1>
+        <h1>Pods</h1>
         <p>Pod Number: {pod.podNumber}</p>
         <p>Price: {pod.price}</p>
         <BookingForm id={id} />
